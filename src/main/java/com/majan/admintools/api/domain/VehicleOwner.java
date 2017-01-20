@@ -15,6 +15,7 @@ public class VehicleOwner {
     private long id;
     private String firstName;
     private String lastName;
+    private String nic;
     private Address address;
     private ContactNumbers contactNumbers;
     private String email;
@@ -44,11 +45,15 @@ public class VehicleOwner {
         return email;
     }
 
+    public String getNic() {
+        return nic;
+    }
+
     private VehicleOwner() {
     }
 
-    public static Builder aVehicleOwner(String firstName, String lastName, ContactNumbers contactNumbers) {
-        return new Builder(firstName, lastName, contactNumbers);
+    public static Builder aVehicleOwner(String firstName, String lastName, ContactNumbers contactNumbers, String nic) {
+        return new Builder(firstName, lastName, contactNumbers, nic);
     }
 
     public ValidationResult validate() {
@@ -67,6 +72,10 @@ public class VehicleOwner {
             messages.add("Vehicle Owner should have at-least contact number.");
         }
 
+        if(isNullOrEmpty(this.nic)) {
+            messages.add("Vehicle Owner should have a NIC.");
+        }
+
         boolean isValid = messages.isEmpty() ? true : false;
         return new ValidationResult(isValid, messages);
     }
@@ -76,14 +85,16 @@ public class VehicleOwner {
         private long id;
         private String firstName;
         private String lastName;
+        private String nic;
         private Address address;
         private ContactNumbers contactNumbers;
         private String email;
 
-        public Builder(String firstName, String lastName, ContactNumbers contactNumbers) {
+        public Builder(String firstName, String lastName, ContactNumbers contactNumbers, String nic) {
             this.firstName = firstName;
             this.lastName = lastName;
             this.contactNumbers = contactNumbers;
+            this.nic = nic;
         }
 
         public Builder withId(long id) {
@@ -110,6 +121,7 @@ public class VehicleOwner {
             vo.contactNumbers = this.contactNumbers;
             vo.email = this.email;
             vo.address = this.address;
+            vo.nic = this.nic;
 
             return vo;
         }

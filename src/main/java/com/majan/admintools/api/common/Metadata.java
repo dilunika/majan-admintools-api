@@ -1,9 +1,9 @@
-package com.majan.admintools.api;
+package com.majan.admintools.api.common;
 
 import java.util.Date;
 
 /**
- * Created by dilunika on 27/12/16.
+ * Created by dilunika on 15/01/17.
  */
 public class Metadata {
 
@@ -23,5 +23,4 @@ public class Metadata {
     public Date getCurrentDate() {
         return currentDate;
     }
-
 }

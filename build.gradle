@@ -28,7 +28,10 @@ dependencies {
     compile (
         [group: 'io.vertx', name: 'vertx-core', version: '3.2.1'],
         [group: 'io.vertx', name: 'vertx-web', version: '3.2.1'],
-        [group: 'com.google.guava', name: 'guava', version: '19.0']
+        [group: 'io.vertx', name: 'vertx-jdbc-client', version: '3.3.3'],
+        [group: 'io.vertx', name: 'vertx-rx-java', version: '3.3.3'],
+        [group: 'com.google.guava', name: 'guava', version: '19.0'],
+        [group: 'org.postgresql', name: 'postgresql', version: '9.4.1212']
     )
     testCompile (
         [group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.0.0-M3'],

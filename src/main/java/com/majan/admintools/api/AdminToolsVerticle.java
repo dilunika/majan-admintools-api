@@ -1,5 +1,7 @@
 package com.majan.admintools.api;
 
+import com.majan.admintools.api.common.JdbcUtil;
+import com.majan.admintools.api.common.Metadata;
 import com.majan.admintools.api.vehicle.owners.VehicleOwnerRoute;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.AsyncResult;
@@ -25,19 +27,19 @@ public class AdminToolsVerticle extends AbstractVerticle {
         router.route("/").handler(rc -> {
             HttpServerResponse res = rc.response();
             res.putHeader("content-type", "application/json; charset=utf-8")
-                .end(Json.encodePrettily(new Metadata("1.0.", new Date())));
+                    .end(Json.encodePrettily(new Metadata("1.0.", new Date())));
         });
 
-        router.route("/api/vehicleowners*").handler(BodyHandler.create());
-        router.post("/api/vehicleowners").handler(VehicleOwnerRoute::create);
+        JdbcUtil.initialize(vertx);
+        VehicleOwnerRoute.initialize(router);
 
         vertx
-            .createHttpServer()
-            .requestHandler(router::accept)
-            .listen(
-                config().getInteger("http.port", 8080),
-                http -> completeStartup(http, fut)
-            );
+                .createHttpServer()
+                .requestHandler(router::accept)
+                .listen(
+                        config().getInteger("http.port", 8080),
+                        http -> completeStartup(http, fut)
+                );
 
     }
 

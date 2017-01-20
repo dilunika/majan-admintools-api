@@ -25,7 +25,7 @@ class VehicleOwnerTest {
                                 .withMobileNumber("0772322323")
                                 .build();
 
-        VehicleOwner vo = aVehicleOwner("Nimal", "Perera", cn).build();
+        VehicleOwner vo = aVehicleOwner("Nimal", "Perera", cn, "842060666V").build();
 
         assertThat(vo, notNullValue());
         assertThat(vo.getFirstName(), is("Nimal"));
@@ -39,7 +39,7 @@ class VehicleOwnerTest {
                                 .withMobileNumber("0772322323")
                                 .build();
 
-        VehicleOwner vo = aVehicleOwner("", "Perera", cn).build();
+        VehicleOwner vo = aVehicleOwner("", "Perera", cn, "842060666V").build();
 
         ValidationResult validationResult = vo.validate();
         assertThat(validationResult.isValid(), is(false));
@@ -54,7 +54,22 @@ class VehicleOwnerTest {
                                 .withHomeNumber("011234343")
                                 .build();
 
-        VehicleOwner vo = aVehicleOwner("Amal", "", cn).build();
+        VehicleOwner vo = aVehicleOwner("Amal", "", cn, "842060666V").build();
+
+        ValidationResult validationResult = vo.validate();
+        assertThat(validationResult.isValid(), is(false));
+        assertThat(validationResult.getErrorMessages().size(), is(1));
+    }
+
+    @Test
+    @DisplayName("Should not have null or empty last name.")
+    public void shouldBeInvalidIfNICIsNullOrEmpty() {
+
+        ContactNumbers cn = newNumbersList()
+                .withHomeNumber("022322232")
+                .build();
+
+        VehicleOwner vo = aVehicleOwner("Amal", "Palitha", cn, null).build();
 
         ValidationResult validationResult = vo.validate();
         assertThat(validationResult.isValid(), is(false));
@@ -67,7 +82,7 @@ class VehicleOwnerTest {
 
         ContactNumbers cn = newNumbersList().build();
 
-        VehicleOwner vo = aVehicleOwner("Amal", "Perera", cn).build();
+        VehicleOwner vo = aVehicleOwner("Amal", "Perera", cn, "842060666V").build();
 
         ValidationResult validationResult = vo.validate();
         assertThat(validationResult.isValid(), is(false));

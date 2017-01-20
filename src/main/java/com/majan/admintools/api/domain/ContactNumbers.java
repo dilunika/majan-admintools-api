@@ -13,7 +13,7 @@ public class ContactNumbers {
     private String homeNumber;
     private String officeNumber;
 
-    private ContactNumbers() {
+    public ContactNumbers() {
     }
 
     public static Builder newNumbersList() {
