@@ -37,7 +37,7 @@ public class VehicleOwnerRoute {
             if(validationResult.isValid()) {
                 VehicleOwnerService.insert(vo).subscribe(rowsUpdated -> {
                     if(rowsUpdated == 1){
-                        generateResponse(routingContext, 201, vo);
+                        generateResponse(routingContext, 201, null);
                     } else {
                         generateResponse(routingContext, 500, "Failed to add Vehicle Owner. Could not persist.");
                     }

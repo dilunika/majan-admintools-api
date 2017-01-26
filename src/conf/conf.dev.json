@@ -1,0 +1,6 @@
+{
+  "http.port" : 8082,
+  "db.url" : "jdbc:postgresql://localhost/majan",
+  "db.driver_class" : "org.postgresql.Driver",
+  "db.max_pool_size" : 30
+}
