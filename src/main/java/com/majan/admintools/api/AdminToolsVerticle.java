@@ -1,19 +1,15 @@
 package com.majan.admintools.api;
 
-import com.majan.admintools.api.common.Configurations;
 import com.majan.admintools.api.common.JdbcUtil;
 import com.majan.admintools.api.common.Metadata;
 import com.majan.admintools.api.vehicle.owners.VehicleOwnerRoute;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.AsyncResult;
-import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Future;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.core.json.Json;
-import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
-import io.vertx.ext.web.handler.BodyHandler;
 
 import java.util.Date;
 

@@ -4,14 +4,26 @@
   "description": "Majan Admin Tools API Integration Tests.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "vehicleOwnerSpec": "./node_modules/.bin/babel-tape-runner functional/vehicle-owner.spec.js | faucet"
   },
   "author": "Kasun Dilunika",
   "license": "ISC",
   "devDependencies": {
-    "frisby": "^0.8.5"
+    "babel-cli": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babelify": "^7.3.0",
+    "colors": "^1.1.2",
+    "faker": "^4.1.0",
+    "faucet": "0.0.1",
+    "frisby": "^0.8.5",
+    "tape": "^4.6.3"
   },
   "dependencies": {
-    "jasmine-node": "^1.14.5"
+    "babel-tape-runner": "^2.0.1",
+    "jasmine-node": "^1.14.5",
+    "moment": "^2.17.1",
+    "rx-http-request": "^1.2.0",
+    "rxjs-es": "^5.0.0-beta.12",
+    "tap": "^10.3.0"
   }
 }

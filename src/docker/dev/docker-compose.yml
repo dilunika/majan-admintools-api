@@ -1,0 +1,25 @@
+version: 2
+
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: app.dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - majan-network
+
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: password
+    networks:
+      - majan-network
+
+
+newroks:
+  majan-network:
+    driver: bridge

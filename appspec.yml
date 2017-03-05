@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: publish
+    destination: C:\inetpub\wwwroot\contactenergymiddleware
+hooks:
+  ApplicationStop:
+    - location: ops/pre-install.sh
+  ApplicationStart:
+    - location: ops/post-install.sh
